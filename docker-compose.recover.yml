@@ -1,0 +1,11 @@
+# Override file used during recovery to bring pg-a back as a standby of pg-b.
+services:
+  pg-a:
+    environment:
+      NODE_ROLE: standby
+      NODE_APPNAME: pg-a-recover
+      PRIMARY_HOST: pg-b
+      POSTGRES_PASSWORD: postgres
+      REPL_USER: replicator
+      REPL_PASSWORD: replpass
+    depends_on: !reset []
